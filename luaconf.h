@@ -80,7 +80,7 @@
 
 #define l_floor(x)        (l_mathop(floor)(x))
 
-#define lua_number2str(s, sz, n)    l_sprintf((s), sz, LUA_NUMBER_FMT, (n))
+#define lua_number2str(s, sz, n)    (dtostr((n), (s), (sz)))
 
 /*
 @@ lua_numbertointeger converts a float number to an integer, or
@@ -127,7 +127,7 @@
 /* The following definitions are good for most cases here */
 
 #define LUA_INTEGER_FMT        "%" LUA_INTEGER_FRMLEN "d"
-#define lua_integer2str(s, sz, n)    l_sprintf((s), sz, LUA_INTEGER_FMT, (n))
+#define lua_integer2str(s, sz, n)    (itostr((n), (s), (sz)))
 
 #define LUAI_UACINT        int64_t
 #define LUA_UNSIGNED        uint64_t
@@ -135,8 +135,6 @@
 #define LUA_INTEGER_FRMLEN "ll"
 #define LUA_MAXINTEGER        INT64_MAX
 #define LUA_MININTEGER        INT64_MIN
-
-#define l_sprintf(s, sz, f, i)    snprintf(s,sz,f,i)
 
 #define LUA_KCONTEXT    intptr_t
 

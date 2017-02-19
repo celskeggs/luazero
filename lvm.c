@@ -226,9 +226,7 @@ void luaV_finishset(lua_State *L, const TValue *t, TValue *key,
 /*
 ** Compare two strings 'ls' x 'rs', returning an integer smaller-equal-
 ** -larger than zero if 'ls' is smaller-equal-larger than 'rs'.
-** The code is a little tricky because it allows '\0' in the strings
-** and it uses 'strcoll' (to respect locales) for each segments
-** of the strings.
+** The code is a little tricky because it allows '\0' in the strings.
 */
 static int l_strcmp(const TString *ls, const TString *rs) {
     const char *l = getstr(ls);
@@ -236,7 +234,7 @@ static int l_strcmp(const TString *ls, const TString *rs) {
     const char *r = getstr(rs);
     size_t lr = tsslen(rs);
     for (;;) {  /* for each segment */
-        int temp = strcoll(l, r);
+        int temp = strcmp(l, r);
         if (temp != 0)  /* not equal? */
             return temp;  /* done */
         else {  /* strings are equal up to a '\0' */
@@ -637,8 +635,6 @@ static void pushclosure(lua_State *L, Proto *p, UpVal **encup, StkId base,
     if (!isblack(p))  /* cache will not break GC invariant? */
         p->cache = ncl;  /* save it on cache for reuse */
 }
-
-#if 0
 
 /*
 ** finish execution of an opcode interrupted by an yield
@@ -1318,5 +1314,3 @@ void luaV_execute(lua_State *L) {
 }
 
 /* }================================================================== */
-
-#endif

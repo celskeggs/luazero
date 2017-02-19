@@ -441,9 +441,9 @@ const char *luaO_pushvfstring(lua_State *L, const char *fmt, va_list argp) {
                 break;
             }
             case 'p': {  /* a pointer */
-                char buff[4 * sizeof(void *) + 8]; /* should be enough space for a '%p' */
-                int l = l_sprintf(buff, sizeof(buff), "%p", va_arg(argp, void *));
-                pushstr(L, buff, l);
+                void *arg_n = va_arg(argp, void*);
+                UNUSED(arg_n);
+                pushstr(L, "0xDEADBEEF", 10);
                 break;
             }
             case 'U': {  /* an 'int' as a UTF-8 sequence */
