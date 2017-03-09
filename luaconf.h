@@ -126,7 +126,6 @@
 
 /* The following definitions are good for most cases here */
 
-#define LUA_INTEGER_FMT        "%" LUA_INTEGER_FRMLEN "d"
 #define lua_integer2str(s, sz, n)    (itostr((n), (s), (sz)))
 
 #define LUAI_UACINT        int64_t

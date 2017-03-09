@@ -19,7 +19,8 @@ add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/luaembed_final.s
 add_library(luazero lmem.c lgc.h lobject.h llimits.h lua.h luaconf.h lstate.h ltm.h lzio.h lmem.h ldebug.h ldo.h
         lauxlib.h lauxlib.c helpers.c helpers.h dlmalloc.c dlmalloc.h dlmalloctweaks.h lstate.c lapi.h lfunc.h llex.h
         lstring.h ltable.h lapi.c lundump.h lvm.h ldebug.c lcode.h lopcodes.h lparser.h ltable.c lobject.c lctype.h
-        lstring.c ltm.c llex.c lzio.c lfunc.c lgc.c ldo.c lparser.c lvm.c lctype.c lcode.c lopcodes.c ldump.c lundump.c)
+        lstring.c ltm.c llex.c lzio.c lfunc.c lgc.c ldo.c lparser.c lvm.c lctype.c lcode.c lopcodes.c ldump.c lundump.c
+        lbaselib.c libs.h)
 
 add_executable(lua main.c ${CMAKE_CURRENT_BINARY_DIR}/luaembed_final.s)
 target_include_directories(lua PUBLIC lua)
